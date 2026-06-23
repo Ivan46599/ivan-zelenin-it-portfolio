@@ -14,6 +14,6 @@ pip install requests
 python src/parse_jobs.py --source data/sample_jobs.json --remote-only --min-salary 45000
 ```
 
-## Что показывает работодателю
+## Что показывает
 
 Проект показывает базовую backend/data-автоматизацию: работа с HTTP, JSON, CLI-аргументами, фильтрацией и CSV-выгрузкой.
