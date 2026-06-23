@@ -1,19 +1,26 @@
 # API Data Parser
 
-Портфолио-проект: загрузка JSON-данных из файла или API, нормализация полей, фильтрация и экспорт в CSV.
+CLI-скрипт для получения JSON-данных, их нормализации и выгрузки в CSV.
+
+## Возможности
+
+- получение данных из JSON/API-источника;
+- базовая валидация структуры данных;
+- преобразование записей в табличный формат;
+- сохранение результата в CSV;
+- запуск через аргументы командной строки.
 
 ## Стек
 
-Python, requests, csv, argparse, JSON.
+Python, requests, csv, argparse, pathlib.
 
 ## Запуск
 
 ```bash
-cd projects/api-data-parser
-pip install requests
-python src/parse_jobs.py --source data/sample_jobs.json --remote-only --min-salary 45000
+pip install -r requirements.txt
+python api_parser.py --output results/data.csv
 ```
 
-## Что показывает
+## Что показывает проект
 
-Проект показывает базовую backend/data-автоматизацию: работа с HTTP, JSON, CLI-аргументами, фильтрацией и CSV-выгрузкой.
+Проект демонстрирует типовую задачу автоматизации: получить данные, привести к удобному виду и сохранить для дальнейшего анализа.

@@ -1,0 +1,3 @@
+company,title,salary_from,remote,skills
+Beta,Junior QA,50000,True,"Test cases, Postman"
+Delta,Backend Intern,60000,True,"Python, Flask, Docker"

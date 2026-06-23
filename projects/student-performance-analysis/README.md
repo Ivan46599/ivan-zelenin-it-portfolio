@@ -1,26 +1,30 @@
 # Student Performance Analysis
 
-Портфолио-проект по анализу учебных результатов: загрузка CSV, расчёт средних показателей, поиск группы риска, группировка и построение графиков.
+Проект по анализу учебных данных. На синтетическом датасете рассчитываются показатели успеваемости, строятся сводные таблицы и графики.
+
+## Возможности
+
+- загрузка CSV-данных;
+- очистка и подготовка датасета;
+- расчёт средних значений и группировок;
+- построение графиков;
+- сохранение итогового отчёта.
 
 ## Стек
 
-Python, pandas, matplotlib, argparse.
+Python, pandas, NumPy, matplotlib.
 
 ## Запуск
 
 ```bash
-cd projects/student-performance-analysis
-pip install pandas matplotlib
-python src/analyze_students.py
+pip install -r requirements.txt
+python analyze_students.py
 ```
 
-После запуска появятся файлы в `outputs/`:
+## Результат
 
-- `student_report.csv`;
-- `group_summary.csv`;
-- `average_score_by_student.png`;
-- `average_score_by_subject.png`.
+Проект сохраняет отчёт и графики в папку `results/`.
 
-## Что показывает
+## Что показывает проект
 
-Этот проект подходит для откликов на Data Analyst Intern / Python Intern: он показывает чтение данных, обработку таблиц, агрегации, визуализацию и CLI.
+Проект подходит для демонстрации базовых навыков Data Analyst Intern: работа с CSV, агрегация данных, визуализация и формулирование выводов.

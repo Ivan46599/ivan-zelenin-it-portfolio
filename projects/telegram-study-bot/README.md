@@ -1,30 +1,31 @@
 # Telegram Study Bot
 
-Портфолио-заготовка Telegram-бота для ведения учебных задач. Бот хранит задачи пользователя в SQLite.
+Учебный Telegram-бот для заметок и напоминаний. Проект показывает работу с обработчиками команд, SQLite и конфигурацией через переменные окружения.
 
-## Команды
+## Возможности
 
-- `/start` — справка;
-- `/add текст задачи` — добавить задачу;
-- `/list` — показать задачи;
-- `/done id` — отметить задачу выполненной.
+- обработка базовых команд;
+- сохранение учебных заметок;
+- хранение данных в SQLite;
+- конфигурация токена через `.env`;
+- разделение кода на модули.
 
 ## Стек
 
-Python, python-telegram-bot, SQLite, dotenv.
+Python, aiogram или python-telegram-bot, SQLite, python-dotenv.
 
 ## Запуск
 
 ```bash
-cd projects/telegram-study-bot
 python -m venv .venv
-source .venv/bin/activate
+.venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env
-# вставь токен BotFather в .env
-python src/bot.py
+copy .env.example .env
+python bot.py
 ```
 
-## Что показывает
+В `.env` нужно указать токен бота.
 
-Проект демонстрирует работу с внешним API, обработчиками команд, SQLite, конфигурацией через переменные окружения и асинхронной библиотекой.
+## Что показывает проект
+
+Проект демонстрирует работу с внешним API, хранением данных и базовой архитектурой небольшого Python-приложения.
