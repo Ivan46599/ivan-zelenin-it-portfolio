@@ -25,6 +25,6 @@ python main_resist_analysis.py
 
 Результаты сохраняются в папки `figures/` и `data/`.
 
-## Что показывает работодателю
+## Что показывает
 
 Проект полезен для стажировок в направлениях scientific computing, data analysis, engineering software, image/data processing: есть численное моделирование, метрики, визуализация и инженерная предметная область.
