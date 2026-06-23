@@ -20,6 +20,6 @@ python src/maze_pathfinding.py --maze data/sample_maze.txt
 python src/maze_pathfinding.py --maze data/maze-for-u.txt --start 8,15 --key 2,10 --exit 599,798
 ```
 
-## Что показывает работодателю
+## Что показывает
 
 Проект демонстрирует структуры данных, графы, работу с файлами, CLI, декомпозицию функций и базовые тесты.
