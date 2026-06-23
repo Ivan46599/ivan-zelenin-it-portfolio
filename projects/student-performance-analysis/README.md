@@ -21,6 +21,6 @@ python src/analyze_students.py
 - `average_score_by_student.png`;
 - `average_score_by_subject.png`.
 
-## Что показывает работодателю
+## Что показывает
 
 Этот проект подходит для откликов на Data Analyst Intern / Python Intern: он показывает чтение данных, обработку таблиц, агрегации, визуализацию и CLI.
