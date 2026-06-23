@@ -1,53 +1,103 @@
 # IT-портфолио — Иван Зеленин
 
-Репозиторий собран как единое портфолио студента технического направления: Python, обработка изображений, численное моделирование, SQL, web-разработка, алгоритмы, QA-документация и базовые C# desktop-проекты.
+Я студент 3 курса ННГУ им. Н. И. Лобачевского, направление «Фундаментальная информатика и информационные технологии».
+Ищу стажировку или junior-позицию в направлениях: Python-разработка, анализ данных, обработка изображений, QA, backend/web-разработка.
 
-> Важное замечание: часть проектов — исходные учебные/лабораторные работы, часть — аккуратно оформленные портфолио-заготовки для демонстрации навыков. Перед отправкой работодателю нужно уметь объяснить каждый проект и при необходимости запустить его локально.
+В этом репозитории собраны отобранные учебные и портфолио-проекты: Python, SQL, Flask, обработка изображений, численное моделирование, алгоритмы, QA-документация и C# desktop-разработка.
 
-## Рекомендуемый порядок показа работодателю
+## Ключевые навыки
 
-| № | Проект | Что демонстрирует | Статус |
-|---|---|---|---|
-| 1 | `projects/lithography-real-sem-analysis` | Python, MATLAB, обработка SEM/TIF-изображений, CD/LER/LWR, научные вычисления | основной проект |
-| 2 | `projects/lithography-synthetic-metrics` | NumPy, моделирование структуры фоторезиста, NILS, LER/LWR/CD, графики | основной проект |
-| 3 | `projects/restaurant-booking-flask` | Flask, Jinja2, MySQL/SQL, формы, CRUD, web-приложение | использовать после проверки схемы БД |
-| 4 | `projects/maze-pathfinding-python` | алгоритмы поиска пути, BFS/A*, работа с файлами, CLI | добавлен рефакторинг |
-| 5 | `projects/student-performance-analysis` | pandas, NumPy, matplotlib, CSV-анализ, отчёт | портфолио-заготовка |
-| 6 | `projects/api-data-parser` | requests, JSON, CSV, обработка API-данных | портфолио-заготовка |
-| 7 | `projects/telegram-study-bot` | Telegram Bot API, SQLite, dotenv, обработчики команд | портфолио-заготовка |
-| 8 | `projects/qa-portfolio` | тест-кейсы, чек-листы, баг-репорты, Postman collection | для Junior QA |
-| 9 | `projects/sql-airline-queries` | SQL-запросы, JOIN, агрегации, выборки | дополнительный проект |
-| 10 | `projects/csharp-winforms-reference` | C#, WinForms, desktop UI | дополнительный материал |
+* Python: скрипты, обработка данных, работа с файлами, CLI, базовая архитектура проекта
+* NumPy, pandas, matplotlib, SciPy, Pillow
+* SQL: выборки, фильтрация, JOIN, агрегации
+* Flask, Jinja2, HTML, CSS, базовая web-разработка
+* MATLAB: инженерные и численные расчёты
+* Git, GitHub, оформление README и структуры проектов
+* Основы QA: чек-листы, тест-кейсы, баг-репорты, Postman
+* Английский язык: B1
 
-## Как превратить в GitHub-портфолио
+## Основные проекты
 
-Оптимальный вариант — не выкладывать всё одним огромным репозиторием, а создать отдельные репозитории для 4–5 сильных проектов:
+| № | Проект                                                                    | Что демонстрирует                                                                   | Статус                 |
+| - | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------- |
+| 1 | [`lithography-real-sem-analysis`](projects/lithography-real-sem-analysis) | Python/MATLAB, обработка SEM/TIF-изображений, расчёт CD/LER/LWR, научные вычисления | основной проект        |
+| 2 | [`lithography-synthetic-metrics`](projects/lithography-synthetic-metrics) | NumPy, моделирование структуры фоторезиста, расчёт CD/LER/LWR/NILS, графики         | основной проект        |
+| 3 | [`restaurant-booking-flask`](projects/restaurant-booking-flask)           | Flask, Jinja2, SQL, формы, CRUD, web-приложение                                     | web/database проект    |
+| 4 | [`maze-pathfinding-python`](projects/maze-pathfinding-python)             | алгоритмы поиска пути, BFS/A*, работа с файлами, CLI                                | алгоритмический проект |
+| 5 | [`student-performance-analysis`](projects/student-performance-analysis)   | pandas, NumPy, matplotlib, CSV-анализ, отчёт                                        | data analysis проект   |
+| 6 | [`qa-portfolio`](projects/qa-portfolio)                                   | чек-листы, тест-кейсы, баг-репорты, API-тестирование                                | Junior QA портфолио    |
 
-1. `lithography-real-sem-analysis`
-2. `lithography-synthetic-metrics`
-3. `restaurant-booking-flask`
-4. `maze-pathfinding-python`
-5. `student-performance-analysis` или `api-data-parser`
+## Дополнительные проекты
 
-Остальное можно оставить в этом монорепозитории как архив учебных и портфолио-проектов.
+| Проект                                                            | Описание                                                                 |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`api-data-parser`](projects/api-data-parser)                     | пример CLI-скрипта для получения JSON-данных, обработки и выгрузки в CSV |
+| [`telegram-study-bot`](projects/telegram-study-bot)               | учебный Telegram-бот с SQLite и `.env`-конфигурацией                     |
+| [`sql-airline-queries`](projects/sql-airline-queries)             | SQL-запросы: JOIN, группировки, фильтрация, агрегаты                     |
+| [`csharp-winforms-reference`](projects/csharp-winforms-reference) | примеры C# WinForms-приложений                                           |
 
 ## Быстрый запуск Python-проектов
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Linux/macOS
-# .venv\Scripts\activate  # Windows
+```
+
+Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Установка зависимостей:
+
+```bash
 pip install -r requirements.txt
 ```
 
-Дальше смотри README внутри каждого проекта.
+Дальше нужно открыть README конкретного проекта и выполнить команды запуска из него.
 
-## Документы
+## Структура репозитория
 
-- `resume/Ivan_Zelenin_IT_resume.md` — текст резюме.
-- `resume/Ivan_Zelenin_IT_resume.docx` — готовый DOCX для отправки.
-- `career/INTERNSHIP_ROADMAP.md` — пошаговый план подготовки к стажировке.
-- `career/WHERE_TO_APPLY.md` — площадки и компании для поиска стажировок.
-- `career/GITHUB_UPLOAD_GUIDE.md` — как залить проекты на GitHub.
+```text
+ivan-zelenin-it-portfolio/
+├── README.md
+├── requirements.txt
+├── resume/
+│   ├── Ivan_Zelenin_IT_resume.md
+│   └── Ivan_Zelenin_IT_resume.docx
+├── career/
+│   ├── INTERNSHIP_ROADMAP.md
+│   ├── WHERE_TO_APPLY.md
+│   ├── GITHUB_UPLOAD_GUIDE.md
+│   └── COVER_LETTERS.md
+└── projects/
+    ├── lithography-real-sem-analysis
+    ├── lithography-synthetic-metrics
+    ├── restaurant-booking-flask
+    ├── maze-pathfinding-python
+    ├── student-performance-analysis
+    ├── api-data-parser
+    ├── telegram-study-bot
+    ├── qa-portfolio
+    ├── sql-airline-queries
+    └── csharp-winforms-reference
+```
 
-Дата сборки: 2026-06-23.
+## Резюме
+
+Резюме находится в папке [`resume/`](resume/):
+
+* `Ivan_Zelenin_IT_resume.md` — версия в Markdown
+* `Ivan_Zelenin_IT_resume.docx` — версия для отправки работодателю
+
+## Контакты
+
+* Email: [i.k.zelenin@gmail.com](mailto:i.k.zelenin@gmail.com)
+* Город: Нижний Новгород
+* GitHub: Ivan46599
