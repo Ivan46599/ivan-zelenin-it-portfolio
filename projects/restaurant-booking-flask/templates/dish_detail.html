@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}{{ dish.Название }} | Ресторан "Гастрономия"{% endblock %}
+
+{% block content %}
+<section class="dish-detail">
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="/">Главная</a> / 
+            <a href="/menu">Меню</a> / 
+            <span>{{ dish.Название }}</span>
+        </div>
+        
+        <div class="dish-content">
+            <div class="dish-gallery">
+                <div class="main-image">
+                    {% if dish.Фото %}
+                    <img src="{{ url_for('static', filename='images/dishes/' + dish.Фото) }}" 
+                         alt="{{ dish.Название }}"
+                         onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                    {% else %}
+                    <div class="image-placeholder large">
+                        <i class="fas fa-utensils"></i>
+                        <p>Фото блюда</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="dish-info">
+                <h1>{{ dish.Название }}</h1>
+                <div class="dish-meta">
+                    <span class="category">{{ dish.Категория }}</span>
+                    <span class="weight">{{ dish.Вес }}</span>
+                    {% if dish.Цена %}
+                    <span class="price">{{ dish.Цена }} ₽</span>
+                    {% endif %}
+                    <span class="availability {% if dish.Доступно %}available{% else %}unavailable{% endif %}">
+                        {% if dish.Доступно %}
+                        <i class="fas fa-check-circle"></i> В наличии
+                        {% else %}
+                        <i class="fas fa-times-circle"></i> Нет в наличии
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="dish-description">
+                    <h3>Описание</h3>
+                    <p>{{ dish.Описание }}</p>
+                </div>
+                
+                {% if dish.Состав %}
+                <div class="dish-composition">
+                    <h3>Состав</h3>
+                    <p>{{ dish.Состав }}</p>
+                </div>
+                {% endif %}
+                
+                <div class="dish-actions">
+                    <a href="/booking" class="btn btn-primary">
+                        <i class="fas fa-calendar-alt"></i> Забронировать столик
+                    </a>
+                    <a href="/menu" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Вернуться в меню
+                    </a>
+                </div>
+                
+                <div class="dish-nutrition">
+                    <h4>Информация о блюде:</h4>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> Приготовление: 15-25 минут</li>
+                        <li><i class="fas fa-leaf"></i> Возможна вегетарианская версия</li>
+                        <li><i class="fas fa-pepper-hot"></i> Острота: средняя</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="related-dishes">
+            <h3>Похожие блюда</h3>
+            <p>Возможно, вам также понравятся</p>
+            <div class="dishes-grid">
+                <!-- Здесь можно добавить похожие блюда через AJAX -->
+                <div class="dish-card small">
+                    <div class="dish-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="dish-info">
+                        <h4>Другие блюда из категории {{ dish.Категория }}</h4>
+                        <a href="/menu?category_id={{ dish.КатегорияID }}" class="btn btn-small">
+                            Смотреть все
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

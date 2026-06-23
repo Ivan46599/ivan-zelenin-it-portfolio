@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+Pillow
+scipy
+python-dotenv
+requests
+Flask
+flask-mysqldb
+python-telegram-bot>=20.0

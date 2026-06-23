@@ -1,0 +1,80 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Меню | Ресторан "Гастрономия"{% endblock %}
+
+{% block content %}
+<section class="menu-page">
+    <div class="container">
+        <h1>Наше меню</h1>
+        <p class="page-subtitle">Выберите категорию или просмотрите все блюда</p>
+        
+        <!-- Фильтры по категориям -->
+        <div class="category-filters">
+            <a href="/menu" class="category-filter {% if not selected_category %}active{% endif %}">
+                Все категории
+            </a>
+            {% for category in categories %}
+            <a href="/menu?category_id={{ category.КатегорияID }}" 
+               class="category-filter {% if selected_category == category.КатегорияID %}active{% endif %}">
+                {{ category.Название }}
+            </a>
+            {% endfor %}
+        </div>
+        
+        <!-- Список блюд -->
+        <div class="menu-grid">
+            {% for dish in dishes %}
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    {% if dish.Фото %}
+                    <img src="{{ url_for('static', filename='images/dishes/' + dish.Фото) }}" 
+                         alt="{{ dish.Название }}"
+                         onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                    {% else %}
+                    <div class="image-placeholder">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    {% endif %}
+                    {% if not dish.Доступно %}
+                    <div class="unavailable-badge">Нет в наличии</div>
+                    {% endif %}
+                </div>
+                <div class="menu-item-info">
+                    <div class="menu-item-header">
+                        <h3>{{ dish.Название }}</h3>
+                        {% if dish.Цена %}
+                        <span class="dish-price">{{ dish.Цена }} ₽</span>
+                        {% endif %}
+                    </div>
+                    <p class="menu-item-category">{{ dish.Категория }}</p>
+                    <p class="menu-item-description">{{ dish.Описание }}</p>
+                    <div class="menu-item-details">
+                        <div class="detail">
+                            <i class="fas fa-weight"></i>
+                            <span>{{ dish.Вес }}</span>
+                        </div>
+                        {% if dish.Состав %}
+                        <div class="detail">
+                            <i class="fas fa-list"></i>
+                            <span>Состав: {{ dish.Состав[:50] }}{% if dish.Состав|length > 50 %}...{% endif %}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="menu-item-actions">
+                        <a href="{{ url_for('dish_detail', dish_id=dish.БлюдоID) }}" class="btn btn-small">
+                            <i class="fas fa-info-circle"></i> Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="no-dishes">
+                <i class="fas fa-search"></i>
+                <h3>Блюда не найдены</h3>
+                <p>Попробуйте выбрать другую категорию</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

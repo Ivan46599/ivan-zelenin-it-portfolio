@@ -1,0 +1,171 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Главная | Ресторан "Гастрономия"{% endblock %}
+
+{% block content %}
+<!-- Герой секция -->
+<section class="hero">
+    <div class="container">
+        <h1>Добро пожаловать в мир изысканной кухни</h1>
+        <p>Уникальные блюда, авторские рецепты и неповторимая атмосфера</p>
+        <div class="hero-buttons">
+            <a href="/menu" class="btn btn-primary">Посмотреть меню</a>
+            <a href="/booking" class="btn btn-secondary">Забронировать столик</a>
+        </div>
+    </div>
+</section>
+
+<!-- Статистика -->
+<section class="stats">
+    <div class="container">
+        <div class="stat-item">
+            <i class="fas fa-utensils"></i>
+            <h3>{{ popular_dishes|length }}+</h3>
+            <p>Блюд в меню</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-chair"></i>
+            <h3>{{ tables_info.total }}</h3>
+            <p>Свободных столиков</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <h3>{{ tables_info.seats }}</h3>
+            <p>Всего мест</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-star"></i>
+            <h3>5 лет</h3>
+            <p>Опыта работы</p>
+        </div>
+    </div>
+</section>
+
+<!-- Популярные блюда -->
+<section class="featured-dishes">
+    <div class="container">
+        <h2>Популярные блюда</h2>
+        <div class="dishes-grid">
+            {% for dish in popular_dishes %}
+            <div class="dish-card">
+                <div class="dish-image">
+                    {% if dish.Фото %}
+                    <img src="{{ url_for('static', filename='images/dishes/' + dish.Фото) }}" 
+                         alt="{{ dish.Название }}"
+                         onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                    {% else %}
+                    <div class="image-placeholder">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="dish-info">
+                    <h3>{{ dish.Название }}</h3>
+                    <p class="dish-category">{{ dish.Категория }}</p>
+                    <p class="dish-desc">{{ dish.Описание[:100] }}...</p>
+                    <div class="dish-meta">
+                        <span class="weight">{{ dish.Вес }}</span>
+                        {% if dish.Цена %}
+                        <span class="price">{{ dish.Цена }} ₽</span>
+                        {% endif %}
+                    </div>
+                    <a href="{{ url_for('dish_detail', dish_id=dish.БлюдоID) }}" class="btn btn-small">Подробнее</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="/menu" class="btn btn-outline">Все меню</a>
+        </div>
+    </div>
+</section>
+
+<!-- Фото ресторана -->
+<section class="restaurant-photos">
+    <div class="container">
+        <h2>Наш ресторан</h2>
+        <p>Уютная атмосфера и прекрасный интерьер</p>
+        
+        <div class="photos-grid">
+            {% for photo in restaurant_photos %}
+            <div class="photo-item">
+                <img src="{{ url_for('static', filename='images/restaurant/' + photo.Путь) }}" 
+                     alt="{{ photo.Название }}"
+                     onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                <div class="photo-caption">
+                    <h4>{{ photo.Название }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="/gallery" class="btn btn-outline">Больше фото</a>
+        </div>
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section class="features">
+    <div class="container">
+        <h2>Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-seedling"></i>
+                <h3>Свежие продукты</h3>
+                <p>Только свежие и качественные ингредиенты</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chef-hat"></i>
+                <h3>Шеф-повар</h3>
+                <p>Опытный шеф-повар с международным опытом</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-wine-glass-alt"></i>
+                <h3>Винная карта</h3>
+                <p>Богатая коллекция вин со всего мира</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-music"></i>
+                <h3>Живая музыка</h3>
+                <p>По вечерам живая музыка и приятная атмосфера</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Отзывы наших гостей</h2>
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    <p>"Прекрасный ресторан! Еда вкуснейшая, обслуживание на высшем уровне. Обязательно вернемся!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Анна С.</strong>
+                    <span>25.10.2024</span>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    <p>"Отличное место для романтического ужина. Атмосфера волшебная, блюда изумительные."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Дмитрий К.</strong>
+                    <span>18.10.2024</span>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    <p>"Провели корпоратив. Все было организовано идеально! Спасибо коллективу ресторана!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>ООО "Технологии"</strong>
+                    <span>12.10.2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

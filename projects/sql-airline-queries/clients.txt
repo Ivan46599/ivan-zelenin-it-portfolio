@@ -1,0 +1,35 @@
+-- Создание таблицы clients
+CREATE TABLE clients (
+    id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20),
+    age INT
+);
+
+-- Заполнение таблицы данными
+INSERT INTO clients (id, name, phone, age) VALUES
+('3EA2CXG3P3VW', 'Aleksandr Nikolaev', '+71333997867', 36),
+('41375QMWKX55', 'Nadezhda Popova', '+72774899565', 74),
+('4A9FUE95UMTR', 'Daria Novikova', '+79043659102', 54),
+('4A9FUE95UVTR', 'DARIA Novikova', '+79043659103', 24),
+('4CBL1CSSHTOZ', 'Dmitry Petrov', '+76684550143', 74),
+('4NRRAHARBISL', 'Vyacheslav Petrov', '+72634849916', 57),
+('6DM0TK59KMP9', 'Boris Sokolov', '+73451751747', 36),
+('A1FDG6PIV84W', 'denis Stepanov', '+77140700202', 26),
+('BSR85GQFNRCB', 'Anna Morozova', '+75198645540', 62),
+('HKPSZUJQDQVG', 'Victor Volkov', '+72630859116', 21),
+('HYS9XO5IUI4K', 'Daria Volkova', '+72900278935', 70),
+('HYS9XO7IUI4K', 'Anna Volkova', NULL, 75),
+('L66RT0W5VFCV', 'Ludmila Ivanova', '+77190 01224 2', 41),
+('LGEBN53X8I1Y', 'ivan Egorov', '+72630859116', 40),
+('M8TLNY8O5UYZ', 'Tatiana Pavlova', '+70265999830', 52),
+('MAFROHBKRFOF', 'Maria Egorova', '+75763445454', 54),
+('O0R58CGGIRCB', 'Elizaveta Egorova', '+70524100898', 65),
+('P4TMWQHK4BPV', 'Angelina Petrova', '+74505 0252 3 9', 50),
+('QO75HHT3YFCV', 'Aleksandra Stepanova', '+70512187274', 71),
+('YXBLICL96GXL', 'nadezhda Ivanova', '+77287237553', 35),
+('ZZIA7AEYNC8A', 'Maria Fedorova', '+78932431470', 28);
+
+-- Проверка данных
+SELECT COUNT(*) as total_clients FROM clients;
+SELECT * FROM clients LIMIT 5;

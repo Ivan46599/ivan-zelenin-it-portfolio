@@ -1,0 +1,572 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Бронирование | Ресторан "Гастрономия"{% endblock %}
+
+{% block content %}
+<section class="booking">
+    <div class="container">
+        <h1>Бронирование столика</h1>
+        <p class="page-subtitle">Забронируйте столик онлайн и получите подтверждение</p>
+        
+        <div class="booking-info-alert">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <p><strong>Важная информация:</strong></p>
+                    <ul>
+                        <li>Бронирование действует в течение выбранной продолжительности</li>
+                        <li>По умолчанию: <strong>2 часа</strong></li>
+                        <li>После истечения времени столик автоматически освобождается</li>
+                        <li>При опоздании более 30 минут бронирование может быть аннулировано</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="booking-steps">
+            <div class="step active">
+                <span class="step-number">1</span>
+                <span class="step-text">Ваши данные</span>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <span class="step-text">Дата и время</span>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <span class="step-text">Выбор столика</span>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <span class="step-text">Подтверждение</span>
+            </div>
+        </div>
+        
+        <form method="POST" action="{{ url_for('booking') }}" class="booking-form" id="bookingForm">
+            <div class="form-section">
+                <h3><i class="fas fa-user"></i> Ваши данные</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required 
+                               placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required 
+                               placeholder="+7 (900) 123-45-67"
+                               pattern="\+?[0-9\s\-\(\)]+">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" 
+                               placeholder="example@mail.ru">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Количество гостей *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Выберите количество</option>
+                            <option value="1">1 человек</option>
+                            <option value="2">2 человека</option>
+                            <option value="3">3 человека</option>
+                            <option value="4" selected>4 человека</option>
+                            <option value="5">5 человек</option>
+                            <option value="6">6 человек</option>
+                            <option value="7">7 человек</option>
+                            <option value="8">8 человек</option>
+                            <option value="9">9 человек</option>
+                            <option value="10">10 человек</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3><i class="fas fa-calendar-alt"></i> Дата и время</h3>
+                <div class="time-selection-info">
+                    <p><i class="fas fa-clock"></i> Ресторан работает: <strong>10:00 - 23:00</strong></p>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Дата посещения *</label>
+                        <input type="date" id="date" name="date" required 
+                               min="{{ today }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Время начала *</label>
+                        <select id="time" name="time" required>
+                            <option value="">Выберите время</option>
+                            {% for hour in range(10, 23) %}
+                            {% if hour <= 21 %} {# Максимум 21:00 для 2-х часового бронирования #}
+                            <option value="{{ hour }}:00">{{ hour }}:00</option>
+                            {% if hour <= 20 %} {# 20:30 тоже допустимо #}
+                            <option value="{{ hour }}:30">{{ hour }}:30</option>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Продолжительность *</label>
+                        <select id="duration" name="duration" required>
+                            <option value="1">1 час</option>
+                            <option value="2" selected>2 часа</option>
+                            <option value="3">3 часа</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="time-summary">
+                    <div class="time-card">
+                        <div class="time-label">Начало:</div>
+                        <div class="time-value" id="startTimeDisplay">--:--</div>
+                    </div>
+                    <div class="time-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="time-card">
+                        <div class="time-label">Окончание:</div>
+                        <div class="time-value" id="endTimeDisplay">--:--</div>
+                    </div>
+                    <div class="time-total">
+                        <div class="time-label">Всего:</div>
+                        <div class="time-value" id="durationDisplay">0 ч</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3><i class="fas fa-chair"></i> Выбор столика</h3>
+                <div class="form-group">
+                    <div class="tables-selection-header">
+                        <p>Доступные столики для <span id="guestsDisplay">--</span> гостей:</p>
+                        <div class="table-legend">
+                            <div class="legend-item">
+                                <div class="legend-color free"></div>
+                                <span>Свободен</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color booked"></div>
+                                <span>Занят</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tables-grid" id="tablesContainer">
+                        <div class="table-search-placeholder">
+                            <i class="fas fa-search"></i>
+                            <p>Заполните дату, время и количество гостей для поиска доступных столиков</p>
+                        </div>
+                    </div>
+                    
+                    <div class="no-tables-message" id="noTablesMessage" style="display: none;">
+                        <div class="no-tables-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>Нет доступных столиков</h4>
+                            <p>На выбранные дату и время нет свободных столиков для указанного количества гостей.</p>
+                            <p><strong>Рекомендации:</strong></p>
+                            <ul>
+                                <li>Попробуйте выбрать другое время</li>
+                                <li>Уменьшите количество гостей</li>
+                                <li>Выберите меньшую продолжительность</li>
+                                <li>Позвоните нам для индивидуального подбора: +7-495-123-45-67</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3><i class="fas fa-edit"></i> Дополнительная информация</h3>
+                <div class="form-group">
+                    <label for="comment">Особые пожелания или комментарии</label>
+                    <textarea id="comment" name="comment" rows="4" 
+                              placeholder="Укажите, если у вас есть особые пожелания, аллергии, или если это особый случай (день рождения, годовщина, свидание, корпоратив и т.д.)"></textarea>
+                    <div class="textarea-counter">
+                        <span id="charCount">0</span>/500 символов
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-submit">
+                <div class="terms-agreement">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        Я согласен с <a href="#" class="terms-link">условиями бронирования</a> и 
+                        <a href="#" class="terms-link">политикой обработки персональных данных</a>
+                    </label>
+                </div>
+                
+                <div class="booking-summary" id="bookingSummary" style="display: none;">
+                    <h4>Сводка бронирования:</h4>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <span class="summary-label">Дата:</span>
+                            <span class="summary-value" id="summaryDate">--</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Время:</span>
+                            <span class="summary-value" id="summaryTime">--</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Продолжительность:</span>
+                            <span class="summary-value" id="summaryDuration">--</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Гостей:</span>
+                            <span class="summary-value" id="summaryGuests">--</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Столик:</span>
+                            <span class="summary-value" id="summaryTable">--</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large" id="submitBtn" disabled>
+                    <i class="fas fa-calendar-check"></i> Забронировать столик
+                </button>
+                
+                <div class="booking-terms">
+                    <p><strong><i class="fas fa-exclamation-circle"></i> Условия бронирования:</strong></p>
+                    <ul>
+                        <li>Бронирование действительно в течение выбранной продолжительности</li>
+                        <li>По истечении времени столик автоматически освобождается</li>
+                        <li>При опоздании более чем на 30 минут бронирование может быть аннулировано</li>
+                        <li>Для групп от 8 человек требуется предварительное подтверждение</li>
+                        <li>Отмена бронирования возможна не позднее чем за 2 часа до визита</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        
+        <div class="booking-info">
+            <div class="info-card">
+                <i class="fas fa-phone-alt"></i>
+                <h4>Телефон для связи</h4>
+                <p>+7-495-123-45-67</p>
+                <p>Ежедневно 10:00-22:00</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-users"></i>
+                <h4>Большая компания</h4>
+                <p>Для компаний от 10 человек</p>
+                <p>Индивидуальный подбор столиков</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-birthday-cake"></i>
+                <h4>Особые случаи</h4>
+                <p>День рождения, свадьба</p>
+                <p>Корпоратив, юбилей</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Элементы формы
+    const dateInput = document.getElementById('date');
+    const timeInput = document.getElementById('time');
+    const durationInput = document.getElementById('duration');
+    const guestsInput = document.getElementById('guests');
+    const tablesContainer = document.getElementById('tablesContainer');
+    const noTablesMessage = document.getElementById('noTablesMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const commentTextarea = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+    
+    // Элементы отображения
+    const startTimeDisplay = document.getElementById('startTimeDisplay');
+    const endTimeDisplay = document.getElementById('endTimeDisplay');
+    const durationDisplay = document.getElementById('durationDisplay');
+    const guestsDisplay = document.getElementById('guestsDisplay');
+    
+    // Элементы сводки
+    const bookingSummary = document.getElementById('bookingSummary');
+    const summaryDate = document.getElementById('summaryDate');
+    const summaryTime = document.getElementById('summaryTime');
+    const summaryDuration = document.getElementById('summaryDuration');
+    const summaryGuests = document.getElementById('summaryGuests');
+    const summaryTable = document.getElementById('summaryTable');
+    
+    // Устанавливаем минимальную и максимальную даты
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 3);
+    
+    dateInput.min = today.toISOString().split('T')[0];
+    dateInput.max = maxDate.toISOString().split('T')[0];
+    
+    // Устанавливаем сегодняшнюю дату по умолчанию
+    dateInput.value = today.toISOString().split('T')[0];
+    
+    // Счетчик символов для комментария
+    commentTextarea.addEventListener('input', function() {
+        const length = this.value.length;
+        charCount.textContent = length;
+        
+        if (length > 500) {
+            this.value = this.value.substring(0, 500);
+            charCount.textContent = 500;
+        }
+    });
+    
+    // Функция для форматирования времени
+    function formatTime(timeStr) {
+        if (!timeStr) return '--:--';
+        const [hours, minutes] = timeStr.split(':');
+        return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
+    }
+    
+    // Функция для расчета времени окончания
+    function calculateEndTime() {
+        const time = timeInput.value;
+        const duration = parseInt(durationInput.value);
+        
+        if (time) {
+            const [hours, minutes] = time.split(':').map(Number);
+            const endHours = hours + duration;
+            const formattedEndTime = `${endHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            
+            startTimeDisplay.textContent = formatTime(time);
+            endTimeDisplay.textContent = formatTime(formattedEndTime);
+            durationDisplay.textContent = `${duration} ч`;
+            
+            updateSummary();
+        } else {
+            startTimeDisplay.textContent = '--:--';
+            endTimeDisplay.textContent = '--:--';
+            durationDisplay.textContent = '0 ч';
+        }
+    }
+    
+    // Функция обновления отображения количества гостей
+    function updateGuestsDisplay() {
+        const guests = guestsInput.value;
+        guestsDisplay.textContent = guests || '--';
+        updateSummary();
+    }
+    
+    // Функция обновления сводки
+    function updateSummary() {
+        if (dateInput.value && timeInput.value && guestsInput.value) {
+            summaryDate.textContent = new Date(dateInput.value).toLocaleDateString('ru-RU');
+            summaryTime.textContent = `${formatTime(timeInput.value)} - ${endTimeDisplay.textContent}`;
+            summaryDuration.textContent = `${durationInput.value} часа`;
+            summaryGuests.textContent = guestsInput.value;
+            bookingSummary.style.display = 'block';
+        } else {
+            bookingSummary.style.display = 'none';
+        }
+    }
+    
+    // Функция обновления доступных столиков
+    function updateAvailableTables() {
+        const date = dateInput.value;
+        const time = timeInput.value;
+        const guests = guestsInput.value;
+        const duration = durationInput.value;
+        
+        // Сбрасываем выбранный столик
+        summaryTable.textContent = '--';
+        submitBtn.disabled = true;
+        
+        if (date && time && guests && duration) {
+            // Проверяем, не в прошлом ли время
+            const selectedDateTime = new Date(`${date}T${time}`);
+            if (selectedDateTime < new Date()) {
+                tablesContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h4>Выбранное время уже прошло</h4>
+                        <p>Пожалуйста, выберите другое время.</p>
+                    </div>
+                `;
+                noTablesMessage.style.display = 'none';
+                return;
+            }
+            
+            // Проверяем, не позже ли 23:00 с учетом продолжительности
+            const endTime = new Date(selectedDateTime.getTime() + parseInt(duration) * 60 * 60 * 1000);
+            const closingTime = new Date(`${date}T23:00`);
+            
+            if (endTime > closingTime) {
+                tablesContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h4>Ресторан закрывается в 23:00</h4>
+                        <p>Пожалуйста, выберите более раннее время или уменьшите продолжительность.</p>
+                    </div>
+                `;
+                noTablesMessage.style.display = 'none';
+                return;
+            }
+            
+            // Показываем индикатор загрузки
+            tablesContainer.innerHTML = `
+                <div class="loading-tables">
+                    <div class="spinner"></div>
+                    <p>Ищем доступные столики...</p>
+                </div>
+            `;
+            noTablesMessage.style.display = 'none';
+            
+            // Отправляем запрос на сервер
+            fetch(`/api/tables?date=${date}&time=${time}&guests=${guests}&duration=${duration}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка сервера');
+                    }
+                    return response.json();
+                })
+                .then(tables => {
+                    if (tables.length > 0) {
+                        let html = '';
+                        tables.forEach(table => {
+                            const capacityText = table.Вместимость === 1 ? 
+                                '1 человек' : `${table.Вместимость} человека`;
+                            
+                            html += `
+                            <div class="table-option">
+                                <input type="radio" 
+                                       name="table_id" 
+                                       id="table_${table.СтоликID}" 
+                                       value="${table.СтоликID}" 
+                                       required
+                                       data-capacity="${table.Вместимость}"
+                                       data-number="${table.Номер}">
+                                <label for="table_${table.СтоликID}">
+                                    <div class="table-header">
+                                        <span class="table-number">№ ${table.Номер}</span>
+                                        <span class="table-capacity">${capacityText}</span>
+                                    </div>
+                                    <div class="table-image">
+                                        ${table.Фото ? 
+                                            `<img src="/static/images/tables/${table.Фото}" alt="Столик ${table.Номер}">` : 
+                                            `<div class="table-icon"><i class="fas fa-chair"></i></div>`
+                                        }
+                                    </div>
+                                    <div class="table-info">
+                                        <span class="table-location">${table.Расположение || 'Основной зал'}</span>
+                                        <span class="table-status free">Свободен</span>
+                                    </div>
+                                </label>
+                            </div>
+                            `;
+                        });
+                        tablesContainer.innerHTML = html;
+                        noTablesMessage.style.display = 'none';
+                        
+                        // Добавляем обработчики для выбора столика
+                        document.querySelectorAll('input[name="table_id"]').forEach(radio => {
+                            radio.addEventListener('change', function() {
+                                if (this.checked) {
+                                    const tableNumber = this.getAttribute('data-number');
+                                    summaryTable.textContent = `№ ${tableNumber}`;
+                                    submitBtn.disabled = false;
+                                }
+                            });
+                        });
+                    } else {
+                        tablesContainer.innerHTML = '';
+                        noTablesMessage.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    tablesContainer.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>Ошибка загрузки</h4>
+                            <p>Не удалось загрузить список столиков. Попробуйте позже.</p>
+                        </div>
+                    `;
+                    noTablesMessage.style.display = 'none';
+                });
+        } else {
+            tablesContainer.innerHTML = `
+                <div class="table-search-placeholder">
+                    <i class="fas fa-search"></i>
+                    <p>Заполните дату, время и количество гостей для поиска доступных столиков</p>
+                </div>
+            `;
+            noTablesMessage.style.display = 'none';
+        }
+    }
+    
+    // События для обновления столиков
+    dateInput.addEventListener('change', function() {
+        updateAvailableTables();
+        calculateEndTime();
+    });
+    
+    timeInput.addEventListener('change', function() {
+        updateAvailableTables();
+        calculateEndTime();
+    });
+    
+    durationInput.addEventListener('change', function() {
+        updateAvailableTables();
+        calculateEndTime();
+    });
+    
+    guestsInput.addEventListener('change', function() {
+        updateAvailableTables();
+        updateGuestsDisplay();
+    });
+    
+    // Валидация формы при отправке
+    const bookingForm = document.getElementById('bookingForm');
+    bookingForm.addEventListener('submit', function(e) {
+        const selectedTable = document.querySelector('input[name="table_id"]:checked');
+        
+        if (!selectedTable) {
+            e.preventDefault();
+            alert('Пожалуйста, выберите столик');
+            return false;
+        }
+        
+        const guests = parseInt(guestsInput.value);
+        const tableCapacity = parseInt(selectedTable.getAttribute('data-capacity'));
+        
+        if (guests > tableCapacity) {
+            e.preventDefault();
+            alert(`Выбранный столик вмещает только ${tableCapacity} человек. Пожалуйста, выберите другой столик.`);
+            return false;
+        }
+        
+        // Проверка времени
+        const selectedDateTime = new Date(`${dateInput.value}T${timeInput.value}`);
+        if (selectedDateTime < new Date()) {
+            e.preventDefault();
+            alert('Выбранное время уже прошло. Пожалуйста, выберите другое время.');
+            return false;
+        }
+        
+        // Проверка на будущее время (не более чем за 3 месяца)
+        const maxDateTime = new Date(maxDate);
+        maxDateTime.setHours(23, 59, 59);
+        
+        if (selectedDateTime > maxDateTime) {
+            e.preventDefault();
+            alert('Бронирование возможно не более чем за 3 месяца вперед.');
+            return false;
+        }
+        
+        return true;
+    });
+    
+    // Инициализация
+    calculateEndTime();
+    updateGuestsDisplay();
+    updateAvailableTables();
+});
+</script>
+{% endblock %}

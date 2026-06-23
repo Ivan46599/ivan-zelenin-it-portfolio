@@ -1,0 +1,6 @@
+[
+  {"company": "Alpha", "title": "Python Intern", "salary_from": 40000, "remote": true, "skills": ["Python", "SQL", "Git"]},
+  {"company": "Beta", "title": "Junior QA", "salary_from": 50000, "remote": true, "skills": ["Test cases", "Postman"]},
+  {"company": "Gamma", "title": "Data Analyst Intern", "salary_from": 45000, "remote": false, "skills": ["SQL", "Pandas", "Excel"]},
+  {"company": "Delta", "title": "Backend Intern", "salary_from": 60000, "remote": true, "skills": ["Python", "Flask", "Docker"]}
+]

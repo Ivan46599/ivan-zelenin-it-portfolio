@@ -1,0 +1,45 @@
+-- Создание базы данных (если нужно)
+CREATE DATABASE IF NOT EXISTS tables_1;
+USE tables_1;
+
+-- Создание таблицы airliners
+CREATE TABLE airliners (
+    id INT PRIMARY KEY,
+    model_name VARCHAR(50) NOT NULL,
+    range INT NOT NULL,
+    production_year INT NOT NULL,
+    color VARCHAR(20),
+    side_number VARCHAR(10),
+    country VARCHAR(50)
+);
+
+-- Заполнение таблицы данными
+INSERT INTO airliners (id, model_name, range, production_year, color, side_number, country) VALUES
+(95579, 'Airbus A320-200', 12800, 2016, 'white', '7729', 'Russia'),
+(474576, 'Boeing 777-300', 7899, 2008, 'brown', '5692', 'Russia'),
+(434546, 'Boeing 777-300', 7900, 2008, 'brown', '5693', 'Russia'),
+(464547, 'Boeing 777-300', 5999, 2008, 'brown', '5694', 'Russia'),
+(913835, 'Airbus A320-200', 14200, 2000, 'white', '3919', 'Germany'),
+(243371, 'Airbus A320-200', 10100, 2005, 'white', '562', 'Russia'),
+(73581, 'Boeing 777-300', 13700, 2018, 'white', '3267', 'Russia'),
+(837896, 'Sukhoi Superjet-100', 4199, 2013, 'white', '868', 'Russia'),
+(837897, 'Sukhoi Superjet-100', 4200, 2013, 'white', '869', 'Russia'),
+(837898, 'Sukhoi Superjet-100', 4201, 2013, 'white', '870', 'Russia'),
+(108551, 'Airbus A320-200', 13900, 2017, 'white', '6022', 'Russia'),
+(473503, 'Airbus A321-200', 10900, 2012, 'white', '8474', 'France'),
+(871029, 'Boeing 777-300', 12700, 2002, 'white', '4070', 'Germany'),
+(974590, 'Boeing 777-300', 13200, 2005, 'white', '488', 'Germany'),
+(461862, 'Airbus A321-200', 12800, 2020, 'white', '6039', 'France'),
+(603813, 'Boeing 777-300', 11700, 2017, 'white', '6001', 'Russia'),
+(619341, 'Airbus A321-200', 10600, 2008, 'white', '7561', 'Russia'),
+(305881, 'Boeing 777-300', 12300, 2005, 'green', '1426', 'Russia'),
+(45877, 'Airbus A321-200', 12900, 1998, 'white', '3879', 'Russia'),
+(569298, 'Cessna 172', 1000, 1979, 'white', '8304', 'Russia'),
+(539298, 'Cessna 172', 1001, 1979, 'white', '8305', 'Russia'),
+(569299, 'Cessna 172', 1200, 1978, 'white', '8306', 'Russia'),
+(569399, 'Cessna 172', 2500, 1978, 'white', '8307', 'Russia'),
+(569279, 'Cessna 172', 2501, 1978, 'white', '8308', 'Russia'),
+(569299, 'Cessna 172', 1200, 1978, 'white', '8306', 'Russia');
+
+-- Проверка данных
+SELECT * FROM airliners;

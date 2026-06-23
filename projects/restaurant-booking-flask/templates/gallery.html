@@ -1,0 +1,68 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Галерея | Ресторан "Гастрономия"{% endblock %}
+
+{% block content %}
+<section class="gallery">
+    <div class="container">
+        <h1>Наш ресторан</h1>
+        <p class="page-subtitle">Окунитесь в атмосферу уюта и изысканности</p>
+        
+        <!-- Фильтры -->
+        <div class="gallery-filters">
+            <button class="filter-btn {% if selected_category == 'all' %}active{% endif %}" 
+                    data-filter="all">Все фото</button>
+            {% for category in categories %}
+            <button class="filter-btn {% if selected_category == category.Категория %}active{% endif %}" 
+                    data-filter="{{ category.Категория }}">
+                {{ category.Категория|capitalize }}
+            </button>
+            {% endfor %}
+        </div>
+        
+        <!-- Галерея -->
+        <div class="gallery-grid">
+            {% for image in gallery_images %}
+            <div class="gallery-item" data-category="{{ image.Категория }}">
+                <a href="{{ url_for('static', filename='images/restaurant/' + image.Путь) }}" 
+                   class="gallery-link"
+                   target="_blank">
+                    <div class="gallery-image">
+                        <img src="{{ url_for('static', filename='images/restaurant/' + image.Путь) }}" 
+                             alt="{{ image.Название }}"
+                             onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                    </div>
+                </a>
+                <div class="gallery-caption">
+                    <h3>{{ image.Название }}</h3>
+                    {% if image.Описание %}
+                    <p>{{ image.Описание }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="no-photos">
+                <i class="fas fa-camera"></i>
+                <h3>Фотографии скоро появятся</h3>
+                <p>Мы готовим для вас лучшие кадры нашего ресторана</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            window.location.href = '/gallery?category=' + filter;
+        });
+    });
+});
+</script>
+{% endblock %}

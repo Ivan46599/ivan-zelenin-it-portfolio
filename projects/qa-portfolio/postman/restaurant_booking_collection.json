@@ -1,0 +1,29 @@
+{
+  "info": {
+    "name": "Restaurant Booking App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Open home page",
+      "request": {
+        "method": "GET",
+        "url": "http://127.0.0.1:5000/"
+      }
+    },
+    {
+      "name": "Open menu",
+      "request": {
+        "method": "GET",
+        "url": "http://127.0.0.1:5000/menu"
+      }
+    },
+    {
+      "name": "Open booking page",
+      "request": {
+        "method": "GET",
+        "url": "http://127.0.0.1:5000/booking"
+      }
+    }
+  ]
+}
