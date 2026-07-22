@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
+
   pull_request:
+
+  workflow_dispatch:
 
 jobs:
   tests:
@@ -24,18 +27,18 @@ jobs:
 
       - name: Установка зависимостей
         run: |
-          pip install pytest
-          pip install -r projects/api-data-parser/requirements.txt
-          pip install -r projects/student-performance-analysis/requirements.txt
+          python -m pip install pytest
+          python -m pip install -r projects/api-data-parser/requirements.txt
+          python -m pip install -r projects/student-performance-analysis/requirements.txt
 
       - name: Проверка синтаксиса Python
         run: python -m compileall projects
 
       - name: Тесты API Data Parser
-        run: pytest projects/api-data-parser/tests -q
+        run: python -m pytest projects/api-data-parser/tests -q
 
       - name: Тесты Maze Pathfinding
-        run: pytest projects/maze-pathfinding-python/tests -q
+        run: python -m pytest projects/maze-pathfinding-python/tests -q
 
       - name: Тесты Student Performance Analysis
-        run: pytest projects/student-performance-analysis/tests -q
+        run: python -m pytest projects/student-performance-analysis/tests -q

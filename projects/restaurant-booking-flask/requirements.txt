@@ -1,4 +1,5 @@
 ﻿Flask==2.3.3
 Flask-MySQLdb==1.0.1
 mysqlclient==2.2.0
+mysql-connector-python
 python-dotenv==1.0.0
