@@ -1,23 +1,44 @@
 # Проекты
 
-В папке собраны учебные и портфолио-проекты по Python, SQL, Flask, обработке изображений, численному моделированию, алгоритмам и QA.
+В этом разделе собраны мои учебные и портфолио-проекты.
 
-## Основные проекты
+Основной фокус портфолио — **Python, анализ данных, SQL, научные вычисления и алгоритмы**.
 
-| Проект | Направление | Краткое описание |
+# Python и анализ данных
+
+| Проект | Стек | Что демонстрирует |
 |---|---|---|
-| [`lithography-real-sem-analysis`](lithography-real-sem-analysis) | image processing / scientific computing | анализ реальных SEM/TIF-изображений фоторезиста и расчёт CD/LER/LWR |
-| [`lithography-synthetic-metrics`](lithography-synthetic-metrics) | numerical modeling | моделирование структуры фоторезиста и расчёт CD/LER/LWR/NILS |
-| [`restaurant-booking-flask`](restaurant-booking-flask) | web / backend | Flask-приложение для бронирования столиков в ресторане |
-| [`maze-pathfinding-python`](maze-pathfinding-python) | algorithms | поиск пути в лабиринте с использованием BFS и A* |
-| [`student-performance-analysis`](student-performance-analysis) | data analysis | анализ учебных данных с pandas и matplotlib |
-| [`qa-portfolio`](qa-portfolio) | QA | чек-листы, тест-кейсы, баг-репорты и Postman-коллекция |
+| [`lithography-real-sem-analysis`](lithography-real-sem-analysis) | Python, NumPy, SciPy, Pillow, matplotlib | обработка реальных SEM-изображений, CD/LER/LWR, scientific computing |
+| [`student-performance-analysis`](student-performance-analysis) | Python, pandas, matplotlib | обработка CSV, агрегация, поиск группы риска, визуализация |
+| [`api-data-parser`](api-data-parser) | Python, requests, JSON, CSV | получение и преобразование данных, CLI |
+| [`sql-airline-queries`](sql-airline-queries) | SQL | 70 запросов, фильтрация, JOIN, CASE, агрегаты, подзапросы |
+| [`lithography-synthetic-metrics`](lithography-synthetic-metrics) | Python, NumPy, matplotlib, MATLAB | численное моделирование и инженерные метрики |
 
-## Дополнительные проекты
+# Python и алгоритмы
 
-| Проект | Краткое описание |
+| Проект | Стек | Что демонстрирует |
+|---|---|---|
+| [`maze-pathfinding-python`](maze-pathfinding-python) | Python, BFS, A*, pytest | алгоритмы поиска пути, структуры данных, CLI |
+
+# Backend
+
+| Проект | Стек | Что демонстрирует |
+|---|---|---|
+| [`restaurant-booking-flask`](restaurant-booking-flask) | Python, Flask, Jinja2, MySQL | web-приложение, формы, SQL и серверная логика |
+| [`telegram-study-bot`](telegram-study-bot) | Python, Telegram API, SQLite | работа с внешним API и хранением данных |
+
+# Дополнительные материалы
+
+| Проект | Что демонстрирует |
 |---|---|
-| [`api-data-parser`](api-data-parser) | обработка JSON/API-данных и выгрузка в CSV |
-| [`telegram-study-bot`](telegram-study-bot) | учебный Telegram-бот с SQLite |
-| [`sql-airline-queries`](sql-airline-queries) | SQL-запросы к учебной базе авиаперевозок |
-| [`csharp-winforms-reference`](csharp-winforms-reference) | примеры C# WinForms-приложений |
+| [`qa-portfolio`](qa-portfolio) | чек-листы, тест-кейсы, баг-репорты и Postman |
+| [`csharp-winforms-reference`](csharp-winforms-reference) | базовый опыт C# и WinForms |
+
+## Основная цель
+
+Портфолио развивается в первую очередь под вакансии:
+
+- Python Intern;
+- Junior Python Developer;
+- Data Analyst Intern;
+- Junior Data Analyst.

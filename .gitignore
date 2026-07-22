@@ -7,6 +7,13 @@ __pycache__/
 venv/
 env/
 
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
 # Environment variables and secrets
 .env
 .env.local

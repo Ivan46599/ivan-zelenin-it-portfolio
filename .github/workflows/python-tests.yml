@@ -1,0 +1,41 @@
+name: Проверка Python-проектов
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получение репозитория
+        uses: actions/checkout@v7
+
+      - name: Установка Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Обновление pip
+        run: python -m pip install --upgrade pip
+
+      - name: Установка зависимостей
+        run: |
+          pip install pytest
+          pip install -r projects/api-data-parser/requirements.txt
+          pip install -r projects/student-performance-analysis/requirements.txt
+
+      - name: Проверка синтаксиса Python
+        run: python -m compileall projects
+
+      - name: Тесты API Data Parser
+        run: pytest projects/api-data-parser/tests -q
+
+      - name: Тесты Maze Pathfinding
+        run: pytest projects/maze-pathfinding-python/tests -q
+
+      - name: Тесты Student Performance Analysis
+        run: pytest projects/student-performance-analysis/tests -q
