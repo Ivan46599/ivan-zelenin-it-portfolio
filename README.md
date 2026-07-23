@@ -212,6 +212,7 @@ CLI-приложение для загрузки JSON-данных из файл
 - [Python (Basic) — HackerRank](https://www.hackerrank.com/certificates/1a65d023ecad), 2026
 - [SQL (Basic) — HackerRank](https://www.hackerrank.com/certificates/896b64a23e61), 2026
 - [Problem Solving (Basic) — HackerRank](https://www.hackerrank.com/certificates/e288482ec9c8), 2026
+- [Pandas — Kaggle Learn](certificates/kaggle_pandas.png), 2026
 
 Подробнее: [`certificates/README.md`](certificates/README.md)
 

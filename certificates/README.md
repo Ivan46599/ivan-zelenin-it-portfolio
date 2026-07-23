@@ -14,6 +14,21 @@
 
 ---
 
+## Kaggle Learn
+
+### Pandas
+
+Получен: **23 июля 2026**
+
+[Открыть сертификат](kaggle_pandas.png)
+
+Сертификат о завершении курса Kaggle Learn по работе с pandas.
+
+Практическое применение pandas показано в проекте
+[`student-performance-analysis`](../projects/student-performance-analysis).
+
+---
+
 ## HackerRank
 
 ### Python (Basic)
@@ -54,3 +69,4 @@ ID сертификата: `E288482EC9C8`
 - SQL — отдельный проект с SQL-запросами;
 - Problem Solving — алгоритмический проект поиска пути;
 - Scientific Computing with Python — базовые и прикладные задачи на Python.
+- Pandas — завершён курс Kaggle Learn; практическое применение показано в проекте Student Performance Analysis.

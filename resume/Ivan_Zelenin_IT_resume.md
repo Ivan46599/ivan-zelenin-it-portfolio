@@ -1,9 +1,9 @@
 # Зеленин Иван Константинович
 
-**Желаемая позиция:** Python Developer Intern / Junior Python Developer / Data Analyst Intern  
-**Город:** Нижний Новгород  
-**Формат:** стажировка / Junior, удалённо или гибридно  
-**Email:** i.k.zelenin@gmail.com  
+**Желаемая позиция:** Python Developer Intern / Junior Python Developer / Data Analyst Intern
+**Город:** Нижний Новгород
+**Формат:** стажировка / Junior, удалённо или гибридно
+**Email:** i.k.zelenin@gmail.com
 **GitHub:** https://github.com/Ivan46599/ivan-zelenin-it-portfolio
 
 ## О себе
@@ -42,7 +42,7 @@ Git, GitHub, VS Code, Jupyter Notebook, MATLAB.
 
 ### Языки
 
-Русский — родной.  
+Русский — родной.
 Английский — B1.
 
 ## Сертификаты
@@ -52,6 +52,12 @@ Git, GitHub, VS Code, Jupyter Notebook, MATLAB.
 2026
 
 https://freecodecamp.org/certification/fcc-5a930e84-ccf5-4a78-b7e2-3893238d8e5e/scientific-computing-with-python-v7
+
+### Pandas — Kaggle Learn
+
+2026
+
+[Сертификат](../certificates/kaggle_pandas.png)
 
 ### Python (Basic) — HackerRank
 
@@ -103,7 +109,7 @@ https://www.hackerrank.com/certificates/e288482ec9c8
 
 Реализованы предварительная обработка изображений, оценка масштаба, выделение краёв линий, расчёт CD, LER и LWR, экспорт результатов в CSV и построение диагностических графиков.
 
-Проект:  
+Проект:
 https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/lithography-real-sem-analysis
 
 ### Student Performance Analysis
@@ -112,7 +118,7 @@ https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/lithog
 
 Анализ синтетического набора учебных данных: загрузка и проверка CSV, расчёт средней успеваемости, определение группы риска, агрегация результатов по группам и построение графиков.
 
-Проект:  
+Проект:
 https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/student-performance-analysis
 
 ### SQL Airline Queries
@@ -121,7 +127,7 @@ https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/studen
 
 Набор из 70 SQL-запросов к учебным данным авиаперевозок. Используются фильтрация, сортировка, CASE, агрегатные функции, JOIN, подзапросы и обработка NULL.
 
-Проект:  
+Проект:
 https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/sql-airline-queries
 
 ### API Data Parser
@@ -130,7 +136,7 @@ https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/sql-ai
 
 CLI-программа для загрузки JSON из файла или HTTP API, нормализации записей, фильтрации данных и экспорта результата в CSV.
 
-Проект:  
+Проект:
 https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/api-data-parser
 
 ### Maze Pathfinding
@@ -139,7 +145,7 @@ https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/api-da
 
 Программа поиска пути в текстовом лабиринте. Для поиска маршрута до ключа используется BFS, для маршрута от ключа до выхода — A*.
 
-Проект:  
+Проект:
 https://github.com/Ivan46599/ivan-zelenin-it-portfolio/tree/main/projects/maze-pathfinding-python
 
 ## Дополнительная информация
