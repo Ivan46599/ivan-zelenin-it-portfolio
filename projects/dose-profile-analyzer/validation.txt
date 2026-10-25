@@ -1,0 +1,40 @@
+Проверка 30.09.2026
+Python 3.12.14, Linux
+
+Команда: python -W error::RuntimeWarning main.py
+
+====== r1 ======
+Ожидаемых квадратов: 10; измерено: 3; проверить: 2; не разрешено: 7
+[{'square': 1, 'position': 0.0105, 'depth_nm': None, 'status': 'unresolved'}, {'square': 2, 'position': 0.1055, 'depth_nm': None, 'status': 'unresolved'}, {'square': 3, 'position': 0.202, 'depth_nm': None, 'status': 'unresolved'}, {'square': 4, 'position': 0.3105, 'depth_nm': None, 'status': 'unresolved'}, {'square': 5, 'position': 0.4095, 'depth_nm': None, 'status': 'unresolved'}, {'square': 6, 'position': 0.507, 'depth_nm': None, 'status': 'unresolved'}, {'square': 7, 'position': 0.6055, 'depth_nm': None, 'status': 'unresolved'}, {'square': 8, 'position': 0.7055, 'depth_nm': 1.389, 'status': 'review'}, {'square': 9, 'position': 0.8065, 'depth_nm': 1.231, 'status': 'review'}, {'square': 10, 'position': 0.907, 'depth_nm': 2.414, 'status': 'measured'}]
+Повторных X объединено: 191; период: 0.100143 мм
+
+====== r2 ======
+Ожидаемых квадратов: 10; измерено: 10; проверить: 0; не разрешено: 0
+[{'square': 1, 'position': 0.057, 'depth_nm': 1.874, 'status': 'measured'}, {'square': 2, 'position': 0.1575, 'depth_nm': 1.565, 'status': 'measured'}, {'square': 3, 'position': 0.2585, 'depth_nm': 3.633, 'status': 'measured'}, {'square': 4, 'position': 0.359, 'depth_nm': 4.182, 'status': 'measured'}, {'square': 5, 'position': 0.4595, 'depth_nm': 3.143, 'status': 'measured'}, {'square': 6, 'position': 0.558, 'depth_nm': 4.759, 'status': 'measured'}, {'square': 7, 'position': 0.656, 'depth_nm': 5.656, 'status': 'measured'}, {'square': 8, 'position': 0.757, 'depth_nm': 6.655, 'status': 'measured'}, {'square': 9, 'position': 0.858, 'depth_nm': 7.167, 'status': 'measured'}, {'square': 10, 'position': 0.958, 'depth_nm': 8.631, 'status': 'measured'}]
+Повторных X объединено: 202; период: 0.100143 мм
+
+====== r3 ======
+Ожидаемых квадратов: 10; измерено: 10; проверить: 0; не разрешено: 0
+[{'square': 1, 'position': 0.062, 'depth_nm': 10.337, 'status': 'measured'}, {'square': 2, 'position': 0.1625, 'depth_nm': 11.453, 'status': 'measured'}, {'square': 3, 'position': 0.263, 'depth_nm': 13.055, 'status': 'measured'}, {'square': 4, 'position': 0.3635, 'depth_nm': 14.88, 'status': 'measured'}, {'square': 5, 'position': 0.4645, 'depth_nm': 16.966, 'status': 'measured'}, {'square': 6, 'position': 0.563, 'depth_nm': 18.472, 'status': 'measured'}, {'square': 7, 'position': 0.661, 'depth_nm': 23.752, 'status': 'measured'}, {'square': 8, 'position': 0.758, 'depth_nm': 26.097, 'status': 'measured'}, {'square': 9, 'position': 0.8625, 'depth_nm': 25.756, 'status': 'measured'}, {'square': 10, 'position': 0.9625, 'depth_nm': 21.366, 'status': 'measured'}]
+Повторных X объединено: 213; период: 0.100143 мм
+
+====== r4 ======
+Ожидаемых квадратов: 10; измерено: 10; проверить: 0; не разрешено: 0
+[{'square': 1, 'position': 0.052, 'depth_nm': 41.493, 'status': 'measured'}, {'square': 2, 'position': 0.1525, 'depth_nm': 50.471, 'status': 'measured'}, {'square': 3, 'position': 0.253, 'depth_nm': 65.624, 'status': 'measured'}, {'square': 4, 'position': 0.3545, 'depth_nm': 80.257, 'status': 'measured'}, {'square': 5, 'position': 0.455, 'depth_nm': 106.324, 'status': 'measured'}, {'square': 6, 'position': 0.553, 'depth_nm': 120.829, 'status': 'measured'}, {'square': 7, 'position': 0.651, 'depth_nm': 135.001, 'status': 'measured'}, {'square': 8, 'position': 0.752, 'depth_nm': 146.304, 'status': 'measured'}, {'square': 9, 'position': 0.8525, 'depth_nm': 155.065, 'status': 'measured'}, {'square': 10, 'position': 0.9525, 'depth_nm': 157.681, 'status': 'measured'}]
+Повторных X объединено: 213; период: 0.100143 мм
+
+====== r5 ======
+Ожидаемых квадратов: 10; измерено: 10; проверить: 0; не разрешено: 0
+[{'square': 1, 'position': 0.065, 'depth_nm': 159.544, 'status': 'measured'}, {'square': 2, 'position': 0.1655, 'depth_nm': 160.878, 'status': 'measured'}, {'square': 3, 'position': 0.266, 'depth_nm': 160.031, 'status': 'measured'}, {'square': 4, 'position': 0.366, 'depth_nm': 160.327, 'status': 'measured'}, {'square': 5, 'position': 0.4665, 'depth_nm': 161.097, 'status': 'measured'}, {'square': 6, 'position': 0.565, 'depth_nm': 159.219, 'status': 'measured'}, {'square': 7, 'position': 0.664, 'depth_nm': 159.948, 'status': 'measured'}, {'square': 8, 'position': 0.7645, 'depth_nm': 161.09, 'status': 'measured'}, {'square': 9, 'position': 0.864, 'depth_nm': 160.308, 'status': 'measured'}, {'square': 10, 'position': 0.965, 'depth_nm': 159.411, 'status': 'measured'}]
+Повторных X объединено: 213; период: 0.100143 мм
+
+Excel: n=36, MAE=0.4711 нм, RMSE=0.6264 нм
+
+Готово: results/report.html
+CSV: UTF-8 BOM, разделитель ';', десятичная точка. При необходимости импортируйте через Данные → Из текста/CSV.
+
+Автоматические проверки: python -W error::RuntimeWarning -m unittest discover -s tests -v
+Результат выполненной проверки: 14 тестов, OK.
+
+Визуально проверены пять графиков профилей и общая дозовая кривая.
+Windows/Python 3.14 и три дополнительных варианта данных не проверены.

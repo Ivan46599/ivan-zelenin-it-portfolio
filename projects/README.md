@@ -9,6 +9,7 @@
 | Проект | Стек | Что демонстрирует |
 |---|---|---|
 | [`lithography-real-sem-analysis`](lithography-real-sem-analysis) | Python, NumPy, SciPy, Pillow, matplotlib | обработка реальных SEM-изображений, CD/LER/LWR, scientific computing |
+| [`dose-profile-analyzer`](dose-profile-analyzer) | Python, NumPy, SciPy, matplotlib, OpenPyXL | анализ профилей профилометрии, дозовые кривые, CSV/JSON и HTML-отчёт |
 | [`student-performance-analysis`](student-performance-analysis) | Python, pandas, matplotlib | обработка CSV, агрегация, поиск группы риска, визуализация |
 | [`api-data-parser`](api-data-parser) | Python, requests, JSON, CSV | получение и преобразование данных, CLI |
 | [`sql-airline-queries`](sql-airline-queries) | SQL | 70 запросов, фильтрация, JOIN, CASE, агрегаты, подзапросы |

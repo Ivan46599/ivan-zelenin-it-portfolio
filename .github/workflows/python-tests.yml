@@ -30,6 +30,7 @@ jobs:
           python -m pip install pytest
           python -m pip install -r projects/api-data-parser/requirements.txt
           python -m pip install -r projects/student-performance-analysis/requirements.txt
+          python -m pip install -r projects/dose-profile-analyzer/requirements.txt
 
       - name: Проверка синтаксиса Python
         run: python -m compileall projects
@@ -42,3 +43,7 @@ jobs:
 
       - name: Тесты Student Performance Analysis
         run: python -m pytest projects/student-performance-analysis/tests -q
+
+      - name: Тесты Dose Profile Analyzer
+        working-directory: projects/dose-profile-analyzer
+        run: python -m pytest tests -q

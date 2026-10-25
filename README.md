@@ -20,6 +20,7 @@
 В портфолио есть проекты по:
 
 - анализу реальных SEM-изображений;
+- анализу экспериментальных профилей и построению дозовых кривых;
 - обработке и визуализации табличных данных;
 - SQL;
 - работе с JSON и API;
@@ -100,62 +101,54 @@
 
 - загрузка и предварительная обработка изображений;
 - оценка масштаба в `nm/px`;
-- нормализация контраста;
-- обнаружение краёв линий;
-- расчёт CD;
-- расчёт LER и LWR;
-- экспорт результатов в CSV;
-- построение диагностических графиков.
+- нормализация контраста и обнаружение краёв линий;
+- расчёт CD, LER и LWR;
+- экспорт результатов в CSV и построение диагностических графиков.
 
 **Стек:** Python, NumPy, SciPy, Pillow, matplotlib, MATLAB.
 
-Это основной scientific Python-проект моего портфолио.
-
 ---
 
-## 2. Student Performance Analysis
+## 2. Dose Profile Analyzer
 
-[`projects/student-performance-analysis`](projects/student-performance-analysis)
+[`projects/dose-profile-analyzer`](projects/dose-profile-analyzer)
 
-Проект по анализу учебных данных.
+CLI-приложение для автоматизированного анализа профилей профилометрии и построения дозовых кривых.
 
 Реализованы:
 
-- загрузка CSV;
-- проверка структуры данных;
-- расчёт средней успеваемости;
-- определение студентов группы риска;
-- агрегация по учебным группам;
-- построение графиков;
-- экспорт итоговых таблиц в CSV.
+- автоматический поиск и проверка входных профилей;
+- определение периодической сетки измерений;
+- оценка глубины относительно локальной фоновой поверхности;
+- контроль качества измерений с метками `measured`, `review`, `unresolved`;
+- экспорт CSV/JSON, диагностические графики и HTML-отчёт;
+- автоматические тесты на синтетических и граничных данных.
+
+**Стек:** Python, NumPy, SciPy, matplotlib, OpenPyXL, pytest.
+
+---
+
+## 3. Student Performance Analysis
+
+[`projects/student-performance-analysis`](projects/student-performance-analysis)
+
+Проект по анализу учебных данных: загрузка и проверка CSV, расчёт средней успеваемости, определение студентов группы риска, агрегация по учебным группам, визуализация и экспорт итоговых таблиц.
 
 **Стек:** Python, pandas, matplotlib.
 
 ---
 
-## 3. SQL Airline Queries
+## 4. SQL Airline Queries
 
 [`projects/sql-airline-queries`](projects/sql-airline-queries)
 
-Набор из 70 учебных SQL-запросов к данным авиаперевозок.
-
-Практикуются:
-
-- фильтрация;
-- сортировка;
-- CASE;
-- агрегатные функции;
-- GROUP BY;
-- JOIN;
-- подзапросы;
-- работа с NULL;
-- строковые функции.
+Набор из 70 учебных SQL-запросов к данным авиаперевозок. Практикуются фильтрация, сортировка, `CASE`, агрегатные функции, `GROUP BY`, `JOIN`, подзапросы, работа с `NULL` и строковые функции.
 
 **Стек:** SQL.
 
 ---
 
-## 4. API Data Parser
+## 5. API Data Parser
 
 [`projects/api-data-parser`](projects/api-data-parser)
 
@@ -165,27 +158,17 @@ CLI-приложение для загрузки JSON-данных из файл
 
 ---
 
-## 5. Maze Pathfinding
+## 6. Maze Pathfinding
 
 [`projects/maze-pathfinding-python`](projects/maze-pathfinding-python)
 
-Алгоритмический проект для поиска маршрута в текстовом лабиринте.
-
-Используются:
-
-- BFS;
-- A*;
-- очередь;
-- приоритетная очередь;
-- манхэттенская эвристика;
-- CLI;
-- работа с файлами.
+Алгоритмический проект для поиска маршрута в текстовом лабиринте. Для пути от старта до ключа используется BFS, для маршрута от ключа до выхода — A*.
 
 **Стек:** Python, алгоритмы, pytest.
 
 ---
 
-## 6. Lithography Synthetic Metrics
+## 7. Lithography Synthetic Metrics
 
 [`projects/lithography-synthetic-metrics`](projects/lithography-synthetic-metrics)
 
@@ -222,6 +205,7 @@ CLI-приложение для загрузки JSON-данных из файл
 
 - [Резюме в Markdown](resume/Ivan_Zelenin_IT_resume.md)
 - [Резюме в PDF](resume/Ivan_Zelenin_IT_resume.pdf)
+- [Резюме в DOCX](resume/Ivan_Zelenin_IT_resume.docx)
 
 ---
 
